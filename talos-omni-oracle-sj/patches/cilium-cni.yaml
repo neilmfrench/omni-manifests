@@ -1,0 +1,6 @@
+cluster:
+  network:
+    cni:
+      name: cilium
+      urls:
+        - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-oracle-sj/manifests/cilium/install_2025-01-02_10-17-08.yaml

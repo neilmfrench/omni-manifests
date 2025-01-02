@@ -5,32 +5,63 @@ kubernetes:
 talos:
   version: v1.9.1
 patches:
-  - name: kubespan-enabled
-    file: patches/kubespan.yml
-  - name: no-cni # we will install cilium in extraManifests
-    file: patches/no-cni.yaml
+  - name: allow-controlplane-scheduling
+    file: patches/allow-controlplane-scheduling.yaml
+
+  - name: cilium-cni
+    file: patches/cilium-cni.yaml
+
+  - name: longhorn-dir
+    file: patches/create-longhorn-dir.yaml
+
+  - name: disable-coredns
+    file: patches/disable-coredns.yaml
+
   - name: disable-kubeproxy
-    file: patches/disable-kubeproxy.yml
-  - name: install-cilium
-    file: patches/extraManifests.yml
-  - name: metric-server
-    file: patches/metrics-server.yml
+    file: patches/disable-kubeproxy.yaml
+
+  - name: extra-manifests
+    file: patches/extra-manifests.yaml
+
+  - name: pod-subnet
+    file: patches/pod-subnet.yaml
+
+  - name: rotate-certs
+    file: patches/pod-subnet.yaml
+
+  - name: service-subnet
+    file: patches/service-subnet.yaml
 systemExtensions:
   - siderolabs/qemu-guest-agent
   - siderolabs/iscsi-tools
   - siderolabs/util-linux-tools
 ---
-kind: Workers
-name: workers
-labels:
-  type: worker
-machineClass:
-  name: cloud
-  size: 2
----
 kind: ControlPlane
-labels:
-  type: control-plane
-machineClass:
-  name: cloud
-  size: 3
+machines:
+  - 9d9d17ac-d00c-4337-8909-94d26e535e0b # talos-dev-sj-controlplane-1
+  - 31cc04bc-3c5e-4f17-8dfc-702932c2bc66 # talos-dev-sj-controlplane-2
+  - eca650f6-99bd-476f-bef7-4079ae3f532e # talos-dev-sj-controlplane-3
+---
+kind: Workers
+machines:
+  - bf2c339b-852f-4a57-84de-e952b17f994e # talos-dev-sj-worker-1
+---
+kind: Machine
+name: 9d9d17ac-d00c-4337-8909-94d26e535e0b
+install:
+  disk: /dev/sda
+---
+kind: Machine
+name: 31cc04bc-3c5e-4f17-8dfc-702932c2bc66
+install:
+  disk: /dev/sda
+---
+kind: Machine
+name: eca650f6-99bd-476f-bef7-4079ae3f532e
+install:
+  disk: /dev/sda
+---
+kind: Machine
+name: bf2c339b-852f-4a57-84de-e952b17f994e
+install:
+  disk: /dev/sda
