@@ -31,6 +31,10 @@ patches:
 
   - name: service-subnet
     file: patches/service-subnet.yaml
+systemExtensions:
+  - siderolabs/qemu-guest-agent
+  - siderolabs/iscsi-tools
+  - siderolabs/util-linux-tools
 ---
 kind: ControlPlane
 machines:
