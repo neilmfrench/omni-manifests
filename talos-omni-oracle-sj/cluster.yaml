@@ -32,36 +32,35 @@ patches:
   - name: service-subnet
     file: patches/service-subnet.yaml
 systemExtensions:
-  - siderolabs/qemu-guest-agent
   - siderolabs/iscsi-tools
   - siderolabs/util-linux-tools
 ---
 kind: ControlPlane
 machines:
-  - 9d9d17ac-d00c-4337-8909-94d26e535e0b # talos-dev-sj-controlplane-1
-  - 31cc04bc-3c5e-4f17-8dfc-702932c2bc66 # talos-dev-sj-controlplane-2
-  - eca650f6-99bd-476f-bef7-4079ae3f532e # talos-dev-sj-controlplane-3
+  - c680db26-1b8e-4fad-83c6-1e97fe259ee6 # talos-dev-sj-controlplane-1
+  - dce9340e-612b-401f-899b-c8d8e657ef56 # talos-dev-sj-controlplane-2
+  - 4c7cbacb-926d-4ae8-a544-e07350c9968e # talos-dev-sj-controlplane-3
 ---
 kind: Workers
 machines:
-  - bf2c339b-852f-4a57-84de-e952b17f994e # talos-dev-sj-worker-1
+  - 6ab99e31-85d6-4919-a58a-62b2d26a41ce # talos-dev-sj-worker-1
 ---
 kind: Machine
-name: 9d9d17ac-d00c-4337-8909-94d26e535e0b
+name: c680db26-1b8e-4fad-83c6-1e97fe259ee6
 install:
   disk: /dev/sda
 ---
 kind: Machine
-name: 31cc04bc-3c5e-4f17-8dfc-702932c2bc66
+name: dce9340e-612b-401f-899b-c8d8e657ef56
 install:
   disk: /dev/sda
 ---
 kind: Machine
-name: eca650f6-99bd-476f-bef7-4079ae3f532e
+name: 4c7cbacb-926d-4ae8-a544-e07350c9968e
 install:
   disk: /dev/sda
 ---
 kind: Machine
-name: bf2c339b-852f-4a57-84de-e952b17f994e
+name: 6ab99e31-85d6-4919-a58a-62b2d26a41ce
 install:
   disk: /dev/sda
