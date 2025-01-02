@@ -98,6 +98,9 @@ ingressController:
   enforceHttps: true
   defaultSecretNamespace: networking
   defaultSecretName: neilfren-ch-production-tls
+  service:
+    externalTrafficPolicy: null
+    type: ClusterIP
   secretsNamespace:
     create: true
     name: cilium-secrets
