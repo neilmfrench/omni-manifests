@@ -1,0 +1,36 @@
+kind: Cluster
+name: oracle-sj-dev
+kubernetes:
+  version: v1.32.0
+talos:
+  version: v1.9.1
+patches:
+  - name: kubespan-enabled
+    file: patches/kubespan.yml
+  - name: no-cni # we will install cilium in extraManifests
+    file: patches/no-cni.yaml
+  - name: disable-kubeproxy
+    file: patches/disable-kubeproxy.yml
+  - name: install-cilium
+    file: patches/extraManifests.yml
+  - name: metric-server
+    file: patches/metrics-server.yml
+systemExtensions:
+  - siderolabs/qemu-guest-agent
+  - siderolabs/iscsi-tools
+  - siderolabs/util-linux-tools
+---
+kind: Workers
+name: workers
+labels:
+  type: worker
+machineClass:
+  name: cloud
+  size: 2
+---
+kind: ControlPlane
+labels:
+  type: control-plane
+machineClass:
+  name: cloud
+  size: 3
