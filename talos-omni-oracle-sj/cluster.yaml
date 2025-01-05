@@ -27,7 +27,7 @@ patches:
     file: patches/pod-subnet.yaml
 
   - name: rotate-certs
-    file: patches/pod-subnet.yaml
+    file: patches/rotate-certs.yaml
 
   - name: service-subnet
     file: patches/service-subnet.yaml
@@ -37,30 +37,30 @@ systemExtensions:
 ---
 kind: ControlPlane
 machines:
-  - c680db26-1b8e-4fad-83c6-1e97fe259ee6 # talos-dev-sj-controlplane-1
-  - dce9340e-612b-401f-899b-c8d8e657ef56 # talos-dev-sj-controlplane-2
-  - 4c7cbacb-926d-4ae8-a544-e07350c9968e # talos-dev-sj-controlplane-3
+  - 4f21e59d-39f9-4dfd-9221-fe8bb0d12d37 # talos-dev-sj-controlplane-1
+  - e8e7e691-0004-4798-8698-142050e442c5 # talos-dev-sj-controlplane-2
+  - 848e2c03-eeb7-4796-af89-c8dc87fd4bb3 # talos-dev-sj-controlplane-3
 ---
 kind: Workers
 machines:
-  - 6ab99e31-85d6-4919-a58a-62b2d26a41ce # talos-dev-sj-worker-1
+  - cdc873c6-208d-4540-841d-7dd76d457110 # talos-dev-sj-worker-1
 ---
 kind: Machine
-name: c680db26-1b8e-4fad-83c6-1e97fe259ee6
+name: 4f21e59d-39f9-4dfd-9221-fe8bb0d12d37
 install:
   disk: /dev/sda
 ---
 kind: Machine
-name: dce9340e-612b-401f-899b-c8d8e657ef56
+name: e8e7e691-0004-4798-8698-142050e442c5
 install:
   disk: /dev/sda
 ---
 kind: Machine
-name: 4c7cbacb-926d-4ae8-a544-e07350c9968e
+name: 848e2c03-eeb7-4796-af89-c8dc87fd4bb3
 install:
   disk: /dev/sda
 ---
 kind: Machine
-name: 6ab99e31-85d6-4919-a58a-62b2d26a41ce
+name: cdc873c6-208d-4540-841d-7dd76d457110
 install:
   disk: /dev/sda
