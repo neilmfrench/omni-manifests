@@ -5,16 +5,19 @@ export KUBECONFIG=kubeconfig
 declare -A helm_releases=(
   ["cilium"]="kube-system"
   ["coredns"]="kube-system"
+  ["kubelet-serving-cert-approver"]="kubelet-serving-cert-approver"
 )
 
 declare -A patch_path_values=(
   ["cilium"]=".cluster.network.cni.urls[0]"
   ["coredns"]=".cluster.extraManifests[1]"
+  ["kubelet-serving-cert-approver"]=".cluster.extraManifests[0]"
 )
 
 declare -A patches=(
   ["cilium"]="cilium-cni.yaml"
   ["coredns"]="extra-manifests.yaml"
+  ["kubelet-serving-cert-approver"]="extra-manifests.yaml"
 )
 
 for release in "${!helm_releases[@]}"; do
@@ -33,7 +36,8 @@ for release in "${!helm_releases[@]}"; do
     yq 'eval(env(path_value))=env(git_manifest_file)' -i "$patch_file"
     echo "Updated manifests for $release"
   else
-    echo "Error: Unable to retrieve Helm release $release in namespace $namespace"
+    kustomize build "manifests/${release}" > "$install_file"
+    yq 'eval(env(path_value))=env(git_manifest_file)' -i "$patch_file"
   fi
 done
 

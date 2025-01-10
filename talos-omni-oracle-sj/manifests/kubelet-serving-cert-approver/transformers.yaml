@@ -1,0 +1,11 @@
+---
+apiVersion: builtin
+kind: AnnotationsTransformer
+metadata:
+  name: annotations
+annotations:
+  kustomize.toolkit.fluxcd.io/name: staging-sj-cluster-infrastructure
+  kustomize.toolkit.fluxcd.io/namespace: flux-system
+fieldSpecs:
+  - path: metadata/annotations
+    create: true
