@@ -1,0 +1,76 @@
+kind: Cluster
+name: staging-rpi
+kubernetes:
+  version: v1.30.2
+talos:
+  version: v1.8.4
+features:
+  backupConfiguration:
+    interval: 8h0m0s
+patches:
+  - idOverride: 200-staging-rpi
+    inline:
+      cluster:
+        allowSchedulingOnControlPlanes: true
+        network:
+          cni:
+            name: custom
+            urls:
+              - https://raw.githubusercontent.com/neilmfrench/homelab-prod/main/talos/manifests/staging-rpi/cilium/install-1_15_6.yaml
+          podSubnets:
+            - 10.224.0.0/16
+          serviceSubnets:
+            - 10.128.0.0/12
+        proxy:
+          disabled: true
+      machine:
+        kubelet:
+          extraArgs:
+            rotate-server-certificates: true
+  - idOverride: 500-0d42edd6-414f-468f-99d8-6db665345540
+    annotations:
+      name: Create Longhorndir
+    inline:
+      machine:
+        kubelet:
+          extraMounts:
+            - destination: /var/lib/longhorn
+              options:
+                - bind
+                - rshared
+                - rw
+              source: /var/lib/longhorn
+              type: bind
+  - idOverride: 500-9381e645-a2aa-41f8-a76f-d7a750648852
+    annotations:
+      name: Disable coredns
+    inline:
+      cluster:
+        coreDNS:
+          disabled: true
+---
+kind: ControlPlane
+machines:
+  - 30303031-3030-3030-3938-656431306366
+  - 30303031-3030-3030-6565-376134333734
+  - 30303031-3030-3030-6666-336565623664
+---
+kind: Workers
+---
+kind: Machine
+systemExtensions:
+  - siderolabs/iscsi-tools
+  - siderolabs/util-linux-tools
+name: 30303031-3030-3030-3938-656431306366
+---
+kind: Machine
+systemExtensions:
+  - siderolabs/iscsi-tools
+  - siderolabs/util-linux-tools
+name: 30303031-3030-3030-6565-376134333734
+---
+kind: Machine
+systemExtensions:
+  - siderolabs/iscsi-tools
+  - siderolabs/util-linux-tools
+name: 30303031-3030-3030-6666-336565623664
