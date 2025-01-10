@@ -9,6 +9,7 @@ helmCharts:
     valuesFile: ./values.yaml
     skipTests: true
     version: 1.16.5
+    kubeVersion: '1.32.0'
     repo: https://helm.cilium.io/
 # REQUIRED: Use transformers to avoid creating the labels & annotations on all references rather than only metadata/annotations or metadata/labels respectively
 transformers:

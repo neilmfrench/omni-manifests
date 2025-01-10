@@ -4,7 +4,7 @@ kind: LabelTransformer
 metadata:
   name: labels
 labels:
-  kustomize.toolkit.fluxcd.io/name: staging-sj-cluster-infrastructure
+  kustomize.toolkit.fluxcd.io/name: cluster-infrastructure-kubelet-serving-cert-approver
   kustomize.toolkit.fluxcd.io/namespace: flux-system
 fieldSpecs:
   - path: metadata/labels
