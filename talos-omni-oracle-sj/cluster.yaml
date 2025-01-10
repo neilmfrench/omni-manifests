@@ -31,6 +31,11 @@ patches:
 
   - name: service-subnet
     file: patches/service-subnet.yaml
+
+    # see: https://github.com/siderolabs/talos/issues/10002
+    # prefer this than use cilium legacy routing
+  - name: disable-hostdns-forwarding
+    file: patches/disable-hostdns-forwarding.yaml
 systemExtensions:
   - siderolabs/iscsi-tools
   - siderolabs/util-linux-tools
