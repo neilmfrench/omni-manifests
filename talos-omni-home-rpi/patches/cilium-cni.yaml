@@ -3,4 +3,4 @@ cluster:
     cni:
       name: custom
       urls:
-        - 'https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-home-rpi/manifests/cilium/install_2025-01-11_11-00-57.yaml'
+        - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-home-rpi/manifests/cilium/install_2025-01-11_11-04-15.yaml
