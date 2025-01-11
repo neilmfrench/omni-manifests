@@ -1,0 +1,65 @@
+kind: Cluster
+name: staging-rpi
+kubernetes:
+  version: v1.30.2
+talos:
+  version: v1.8.4
+features:
+  backupConfiguration:
+    interval: 8h0m0s
+patches:
+  - name: allow-controlplane-scheduling
+    file: patches/allow-controlplane-scheduling.yaml
+
+  - name: cilium-cni
+    file: patches/cilium-cni.yaml
+
+  - name: longhorn-dir
+    file: patches/create-longhorn-dir.yaml
+
+  - name: disable-coredns
+    file: patches/disable-coredns.yaml
+
+  - name: disable-kubeproxy
+    file: patches/disable-kubeproxy.yaml
+
+  - name: extra-manifests
+    file: patches/extra-manifests.yaml
+
+  - name: pod-subnet
+    file: patches/pod-subnet.yaml
+
+  - name: rotate-certs
+    file: patches/rotate-certs.yaml
+
+  - name: service-subnet
+    file: patches/service-subnet.yaml
+
+    # see: https://github.com/siderolabs/talos/issues/10002
+    # prefer this than use cilium legacy routing
+  - name: disable-hostdns-forwarding
+    file: patches/disable-hostdns-forwarding.yaml
+systemExtensions:
+  - siderolabs/iscsi-tools
+  - siderolabs/util-linux-tools
+---
+kind: ControlPlane
+machines:
+  - 30303031-3030-3030-6666-336565623664 # rpi-1
+  - 30303031-3030-3030-6565-376134333734 # rpi-2
+  - 30303031-3030-3030-3938-656431306366 # rpi-3
+---
+kind: Machine
+name: 30303031-3030-3030-6666-336565623664
+install:
+  disk: /dev/mmcblk0
+---
+kind: Machine
+name: 30303031-3030-3030-6565-376134333734
+install:
+  disk: /dev/mmcblk0
+---
+kind: Machine
+name: 30303031-3030-3030-3938-656431306366
+install:
+  disk: /dev/mmcblk0

@@ -1,6 +1,9 @@
 #!/bin/bash
 
-export KUBECONFIG=kubeconfig
+declare -A cluster_dirs=(
+  ["sj"]="talos-omni-oracle-sj"
+  ["rpi"]="talos-omni-home-rpi"
+)
 
 declare -A helm_releases=(
   ["cilium"]="kube-system"
@@ -20,11 +23,19 @@ declare -A patches=(
   ["kubelet-serving-cert-approver"]="extra-manifests.yaml"
 )
 
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <omni-cluster-name>"
+    exit 1
+fi
+
+cd "../${cluster_dirs[$1]}"
+export KUBECONFIG=kubeconfig
+
 for release in "${!helm_releases[@]}"; do
   namespace=${helm_releases[$release]}
   values_file="manifests/${release}/values.yaml"
   install_file="manifests/${release}/install_$(date +'%Y-%m-%d_%H-%M-%S').yaml"
-  export git_manifest_file="https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-oracle-sj/${install_file}"
+  export git_manifest_file="https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/${cluster_dirs[$1]}/${install_file}"
   export path_value="${patch_path_values[$release]}"
   patch_file="patches/${patches[$release]}"
 
@@ -38,6 +49,7 @@ for release in "${!helm_releases[@]}"; do
   else
     kustomize build "manifests/${release}" > "$install_file"
     yq 'eval(env(path_value))=env(git_manifest_file)' -i "$patch_file"
+    echo "Updated manifests for $release"
   fi
 done
 
