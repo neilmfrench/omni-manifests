@@ -1,9 +1,9 @@
 kind: Cluster
 name: staging-rpi
 kubernetes:
-  version: v1.30.2
+  version: v1.32.0
 talos:
-  version: v1.8.4
+  version: v1.9.1
 features:
   backupConfiguration:
     interval: 8h0m0s
