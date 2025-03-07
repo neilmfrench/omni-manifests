@@ -20,6 +20,7 @@ servers:
       - configBlock: |-
           172.16.20.75 cluster-rpi.mesh.neilfren.ch
           10.0.1.150 cluster-sj.mesh.neilfren.ch
+          10.0.0.200 objstore-axvrsr22ymqo.private.compat.objectstorage.us-sanjose-1.oci.customer-oci.com
           129.146.165.14 gslb-ns-phx-neilfren-ch.neilfren.ch
           152.67.232.239 gslb-ns-sj-neilfren-ch.neilfren.ch
           76.87.29.142 gslb-ns-hb-neilfren-ch.neilfren.ch
