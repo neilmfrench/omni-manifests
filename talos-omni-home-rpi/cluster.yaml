@@ -3,7 +3,7 @@ name: staging-rpi
 kubernetes:
   version: v1.32.0
 talos:
-  version: v1.9.4
+  version: v1.9.1
 features:
   backupConfiguration:
     interval: 8h0m0s
@@ -39,6 +39,9 @@ patches:
     # prefer this than use cilium legacy routing
   - name: disable-hostdns-forwarding
     file: patches/disable-hostdns-forwarding.yaml
+
+  - name: temp-disable-selectors
+    file: patches/temp-disable-selectors.yaml
 systemExtensions:
   - siderolabs/iscsi-tools
   - siderolabs/util-linux-tools
