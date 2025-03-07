@@ -3,7 +3,7 @@ name: oracle-sj-dev
 kubernetes:
   version: v1.32.0
 talos:
-  version: v1.9.1
+  version: v1.9.4
 patches:
   - name: allow-controlplane-scheduling
     file: patches/allow-controlplane-scheduling.yaml
