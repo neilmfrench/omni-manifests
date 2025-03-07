@@ -1,7 +1,7 @@
 kind: Cluster
 name: oracle-sj-dev
 kubernetes:
-  version: v1.32.0
+  version: v1.32.2
 talos:
   version: v1.9.4
 patches:
