@@ -1,0 +1,71 @@
+kind: Cluster
+name: oracle-phx-dev
+kubernetes:
+  version: v1.32.2
+talos:
+  version: v1.9.4
+patches:
+  - name: allow-controlplane-scheduling
+    file: patches/allow-controlplane-scheduling.yaml
+
+  - name: cilium-cni
+    file: patches/cilium-cni.yaml
+
+  - name: longhorn-dir
+    file: patches/create-longhorn-dir.yaml
+
+  - name: disable-coredns
+    file: patches/disable-coredns.yaml
+
+  - name: disable-kubeproxy
+    file: patches/disable-kubeproxy.yaml
+
+  - name: extra-manifests
+    file: patches/extra-manifests.yaml
+
+  - name: pod-subnet
+    file: patches/pod-subnet.yaml
+
+  - name: rotate-certs
+    file: patches/rotate-certs.yaml
+
+  - name: service-subnet
+    file: patches/service-subnet.yaml
+
+    # see: https://github.com/siderolabs/talos/issues/10002
+    # prefer this than use cilium legacy routing
+  - name: disable-hostdns-forwarding
+    file: patches/disable-hostdns-forwarding.yaml
+systemExtensions:
+  - siderolabs/iscsi-tools
+  - siderolabs/util-linux-tools
+---
+kind: ControlPlane
+machines:
+  - 53b0c215-3275-45c1-9391-4a429b51e1cb # talos-dev-phx-controlplane-1
+  - ccf7ce31-2fc4-4f16-b4a2-c0718f185866 # talos-dev-phx-controlplane-2
+  - 3033e649-7349-443d-a827-2ed201a8501c # talos-dev-phx-controlplane-3
+---
+kind: Workers
+machines:
+  - f83c6b3c-c712-4831-843a-371c4b4e93bf # talos-dev-phx-worker-1
+---
+kind: Machine
+name: 53b0c215-3275-45c1-9391-4a429b51e1cb
+install:
+  disk: /dev/sda
+---
+kind: Machine
+name: ccf7ce31-2fc4-4f16-b4a2-c0718f185866
+install:
+  disk: /dev/sda
+---
+kind: Machine
+name: 3033e649-7349-443d-a827-2ed201a8501c
+install:
+  disk: /dev/sda
+---
+kind: Machine
+name: f83c6b3c-c712-4831-843a-371c4b4e93bf
+install:
+  disk: /dev/sda
