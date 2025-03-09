@@ -1,4 +1,4 @@
 cluster:
   extraManifests:
-    - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-oracle-sj/manifests/kubelet-serving-cert-approver/install_2025-03-08_20-13-52.yaml
-    - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-oracle-sj/manifests/coredns/install_2025-03-08_20-13-52.yaml
+    - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-oracle-phx/manifests/kubelet-serving-cert-approver/install_2025-03-08_20-13-52.yaml
+    - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-oracle-phx/manifests/coredns/install_2025-03-08_20-13-52.yaml

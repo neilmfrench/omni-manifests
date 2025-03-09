@@ -3,4 +3,4 @@ cluster:
     cni:
       name: custom
       urls:
-        - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-oracle-sj/manifests/cilium/install_2025-03-08_20-13-52.yaml
+        - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-oracle-phx/manifests/cilium/install_2025-03-08_20-13-52.yaml
