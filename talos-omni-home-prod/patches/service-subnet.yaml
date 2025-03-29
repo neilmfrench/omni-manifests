@@ -1,0 +1,4 @@
+cluster:
+  network:
+    serviceSubnets:
+      - 10.112.0.0/12

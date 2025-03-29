@@ -2,7 +2,9 @@
 
 declare -A cluster_dirs=(
   ["sj"]="talos-omni-oracle-sj"
+  ["phx"]="talos-omni-oracle-phx"
   ["rpi"]="talos-omni-home-rpi"
+  ["prod"]="talos-omni-home-prod"
 )
 
 declare -A helm_releases=(

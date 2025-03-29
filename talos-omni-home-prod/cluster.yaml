@@ -1,0 +1,75 @@
+kind: Cluster
+name: production
+kubernetes:
+  version: v1.32.3
+talos:
+  version: v1.9.5
+features:
+  backupConfiguration:
+    interval: 8h0m0s
+patches:
+  - name: allow-controlplane-scheduling
+    file: patches/allow-controlplane-scheduling.yaml
+
+  - name: cilium-cni
+    file: patches/cilium-cni.yaml
+
+  - name: disable-coredns
+    file: patches/disable-coredns.yaml
+
+  - name: disable-kubeproxy
+    file: patches/disable-kubeproxy.yaml
+
+  - name: extra-manifests
+    file: patches/extra-manifests.yaml
+
+  - name: pod-subnet
+    file: patches/pod-subnet.yaml
+
+  - name: rotate-certs
+    file: patches/rotate-certs.yaml
+
+  - name: service-subnet
+    file: patches/service-subnet.yaml
+
+    # see: https://github.com/siderolabs/talos/issues/10002
+    # prefer this than use cilium legacy routing
+  - name: disable-hostdns-forwarding
+    file: patches/disable-hostdns-forwarding.yaml
+
+systemExtensions:
+  - siderolabs/iscsi-tools
+  - siderolabs/util-linux-tools
+---
+kind: ControlPlane
+machines:
+  - 4c4c4544-0035-3410-8031-c4c04f354b33
+  - 4c4c4544-0039-4e10-8031-c3c04f354b33
+  - 4c4c4544-005a-4610-8031-b2c04f354b33
+---
+kind: Workers
+machines:
+  - 4c4c4544-0058-4610-8031-c6c04f354b33
+---
+kind: Machine
+name: 4c4c4544-0035-3410-8031-c4c04f354b33
+install:
+  disk: /dev/nvme0n1
+---
+kind: Machine
+name: 4c4c4544-0039-4e10-8031-c3c04f354b33
+install:
+  disk: /dev/nvme0n1
+---
+kind: Machine
+name: 4c4c4544-005a-4610-8031-b2c04f354b33
+install:
+  disk: /dev/nvme0n1
+---
+kind: Machine
+name: 4c4c4544-0058-4610-8031-c6c04f354b33
+install:
+  disk: /dev/nvme0n1
+patches:
+  # single mount here for my backup drive
+  - file: patches/mount-backup-drive.yaml

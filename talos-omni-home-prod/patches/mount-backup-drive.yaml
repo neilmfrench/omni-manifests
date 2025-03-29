@@ -1,0 +1,14 @@
+machine:
+  kubelet:
+    extraMounts:
+      - destination: /var/mnt/backup
+        type: bind
+        source: /var/mnt/backup
+        options:
+          - bind
+          - rshared
+          - rw
+  disks:
+    - device: /dev/sda
+      partitions:
+        - mountpoint: /var/mnt/backup

@@ -1,0 +1,4 @@
+cluster:
+  network:
+    podSubnets:
+      - 10.222.0.0/16

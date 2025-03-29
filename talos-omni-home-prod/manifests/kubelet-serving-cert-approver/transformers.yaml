@@ -1,0 +1,11 @@
+---
+apiVersion: builtin
+kind: LabelTransformer
+metadata:
+  name: labels
+labels:
+  kustomize.toolkit.fluxcd.io/name: production-cluster-infrastructure
+  kustomize.toolkit.fluxcd.io/prune: disabled
+fieldSpecs:
+  - kind: Namespace
+    path: metadata/labels
