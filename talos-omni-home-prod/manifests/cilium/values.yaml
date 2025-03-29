@@ -26,7 +26,7 @@ localRedirectPolicy: true
 routingMode: tunnel
 tunnelProtocol: vxlan
 autoDirectNodeRoutes: false
-devices: [eth0]
+devices: [enp2s0]
 
 healthChecking: true
 
