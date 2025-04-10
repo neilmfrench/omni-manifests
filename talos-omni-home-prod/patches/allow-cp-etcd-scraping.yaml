@@ -1,0 +1,10 @@
+cluster:
+  etcd:
+    extraArgs:
+      listen-metrics-urls: https://0.0.0.0:2379
+  controllerManager:
+    extraArgs:
+      bind-address: 0.0.0.0
+  scheduler:
+    extraArgs:
+      bind-address: 0.0.0.0

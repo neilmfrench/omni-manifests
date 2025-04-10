@@ -7,7 +7,7 @@ affinity:
               operator: Exists
 deployment:
   annotations:
-    reloader.stakater.com/auto: 'true'
+    reloader.stakater.com/auto: "true"
 fullnameOverride: coredns
 k8sAppLabelOverride: kube-dns
 replicaCount: 2
@@ -21,6 +21,8 @@ servers:
           172.16.20.75 cluster-rpi.mesh.neilfren.ch
           10.0.1.150 cluster-sj.mesh.neilfren.ch
           10.1.1.44 cluster-phx.mesh.neilfren.ch
+          10.0.0.200 objstore-axvrsr22ymqo.private.compat.objectstorage.us-sanjose-1.oci.customer-oci.com
+          10.1.0.200 objstore-axyzurwztn5h.private.compat.objectstorage.us-phoenix-1.oci.customer-oci.com
           fallthrough
         name: hosts
       - name: ready

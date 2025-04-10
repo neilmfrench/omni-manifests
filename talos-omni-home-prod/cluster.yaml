@@ -46,6 +46,9 @@ machines:
   - 4c4c4544-0035-3410-8031-c4c04f354b33
   - 4c4c4544-0039-4e10-8031-c3c04f354b33
   - 4c4c4544-005a-4610-8031-b2c04f354b33
+patches:
+  - name: allow-cp-etcd-scraping
+    file: patches/allow-cp-etcd-scraping.yaml
 ---
 kind: Workers
 machines:
