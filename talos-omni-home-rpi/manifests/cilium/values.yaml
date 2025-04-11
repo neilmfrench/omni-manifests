@@ -29,8 +29,14 @@ clustermesh:
           - '*.mesh.neilfren.ch'
   config:
     clusters:
+      - address: cluster-prod.mesh.neilfren.ch
+        name: production
+        port: 2379
       - address: cluster-sj.mesh.neilfren.ch
         name: dev-sj
+        port: 2379
+      - address: cluster-phx.mesh.neilfren.ch
+        name: dev-phx
         port: 2379
     domain: neilfren.ch
     enabled: true

@@ -51,6 +51,9 @@ machines:
   - 30303031-3030-3030-6666-336565623664 # rpi-1
   - 30303031-3030-3030-6565-376134333734 # rpi-2
   - 30303031-3030-3030-3938-656431306366 # rpi-3
+patches:
+  - name: allow-cp-etcd-scraping
+    file: patches/allow-cp-etcd-scraping.yaml
 ---
 kind: Machine
 name: 30303031-3030-3030-6666-336565623664

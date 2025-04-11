@@ -1,4 +1,4 @@
 cluster:
   extraManifests:
-    - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-home-rpi/manifests/kubelet-serving-cert-approver/install_2025-03-06_23-05-10.yaml
-    - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-home-rpi/manifests/coredns/install_2025-03-06_23-05-12.yaml
+    - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-home-rpi/manifests/kubelet-serving-cert-approver/install_2025-04-11_12-05-44.yaml
+    - https://raw.githubusercontent.com/neilmfrench/omni-manifests/refs/heads/main/talos-omni-home-rpi/manifests/coredns/install_2025-04-11_12-05-46.yaml
