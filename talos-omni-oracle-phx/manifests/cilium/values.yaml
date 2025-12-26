@@ -35,6 +35,12 @@ clustermesh:
           - '*.mesh.neilfren.ch'
   config:
     clusters:
+      - address: cluster-prod.mesh.neilfren.ch
+        name: production
+        port: 2379
+      - address: cluster-sj.mesh.neilfren.ch
+        name: dev-sj
+        port: 2379
       - address: cluster-rpi.mesh.neilfren.ch
         name: staging-rpi
         port: 2379
@@ -94,7 +100,7 @@ ingressController:
     name: cilium-secrets
     sync: true
   service:
-    externalTrafficPolicy: '~'
+    externalTrafficPolicy: "~"
     type: ClusterIP
 ipMasqAgent:
   enabled: false
@@ -108,15 +114,15 @@ k8s:
   requireIPv4PodCIDR: true
   requireIPv6PodCIDR: false
 k8sServiceHost: localhost
-k8sServicePort: '7445'
-kubeProxyReplacement: 'true'
+k8sServicePort: "7445"
+kubeProxyReplacement: "true"
 localRedirectPolicy: true
 nodePort:
   enabled: true
 operator:
   enabled: true
   nodeSelector:
-    node-role.kubernetes.io/control-plane: ''
+    node-role.kubernetes.io/control-plane: ""
   prometheus:
     enabled: false
   replicas: 1

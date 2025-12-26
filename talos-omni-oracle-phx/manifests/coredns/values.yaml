@@ -7,7 +7,7 @@ affinity:
               operator: Exists
 deployment:
   annotations:
-    reloader.stakater.com/auto: 'true'
+    reloader.stakater.com/auto: "true"
 fullnameOverride: coredns
 k8sAppLabelOverride: kube-dns
 replicaCount: 2
@@ -19,6 +19,7 @@ servers:
         name: health
       - configBlock: |-
           172.16.20.75 cluster-rpi.mesh.neilfren.ch
+          172.16.20.25 cluster-prod.mesh.neilfren.ch
           10.0.1.150 cluster-sj.mesh.neilfren.ch
           10.1.1.44 cluster-phx.mesh.neilfren.ch
           fallthrough
