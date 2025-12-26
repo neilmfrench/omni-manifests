@@ -1,7 +1,7 @@
 kind: Cluster
 name: oracle-phx-dev
 kubernetes:
-  version: v1.32.2
+  version: v1.33.7
 talos:
   version: v1.12.0
 patches:
