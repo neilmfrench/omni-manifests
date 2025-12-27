@@ -35,6 +35,12 @@ clustermesh:
           - '*.mesh.neilfren.ch'
   config:
     clusters:
+      - address: cluster-prod.mesh.neilfren.ch
+        name: production
+        port: 2379
+      - address: cluster-phx.mesh.neilfren.ch
+        name: dev-phx
+        port: 2379
       - address: cluster-rpi.mesh.neilfren.ch
         name: staging-rpi
         port: 2379
