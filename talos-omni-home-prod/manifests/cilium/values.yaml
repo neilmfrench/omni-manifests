@@ -40,6 +40,7 @@ clustermesh:
         port: 2379
     domain: neilfren.ch
     enabled: true
+  enableEndpointSliceSynchronization: true
   useAPIServer: true
 cni:
   install: true
