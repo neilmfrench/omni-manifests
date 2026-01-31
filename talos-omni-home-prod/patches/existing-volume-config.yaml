@@ -1,0 +1,7 @@
+---
+apiVersion: v1alpha1
+kind: ExistingVolumeConfig
+name: backup
+discovery:
+  volumeSelector:
+    match: volume.partition_label == "BACKUP"

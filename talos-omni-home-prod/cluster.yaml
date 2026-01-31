@@ -1,9 +1,9 @@
 kind: Cluster
 name: production
 kubernetes:
-  version: v1.32.3
+  version: v1.35.0
 talos:
-  version: v1.11.6
+  version: v1.12.2
 features:
   backupConfiguration:
     interval: 8h0m0s
@@ -75,4 +75,5 @@ install:
   disk: /dev/nvme0n1
 patches:
   # single mount here for my backup drive
+  - file: patches/existing-volume-config.yaml
   - file: patches/mount-backup-drive.yaml
