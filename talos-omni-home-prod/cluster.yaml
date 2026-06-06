@@ -53,6 +53,7 @@ patches:
 kind: Workers
 machines:
   - 4c4c4544-0058-4610-8031-c6c04f354b33
+  - dc1990b4-74cc-4c07-9713-86fd539c97f9
 ---
 kind: Machine
 name: 4c4c4544-0035-3410-8031-c4c04f354b33
@@ -77,3 +78,8 @@ patches:
   # single mount here for my backup drive
   - file: patches/existing-volume-config.yaml
   - file: patches/mount-backup-drive.yaml
+---
+kind: Machine
+name: dc1990b4-74cc-4c07-9713-86fd539c97f9
+install:
+  disk: /dev/nvme0n1
